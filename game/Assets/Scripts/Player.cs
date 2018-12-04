@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
     private Vector2 targetPos;
     private Vector2 targetPosUpwards;
 
+    private float playerPos_Y;
+    private float startPlayerPos_Y;
     private bool movementLR = false;
 
     public float speed;
@@ -28,26 +31,29 @@ public class Player : MonoBehaviour {
 
     
     public float speedMultiplier;
+    public float scoreMultiplier;
 
     private bool check_firstAdd = true;
     private float firstAdd;
 
+    public Text gameText;
+    private float score;
+    
 
-
-
-
+    // doe starting values in start zodat je niet met false en true hoef te werken.
+    // bijv speed upwards + firstadd; in start
+    //DIT KAN JE NU NIET DOEN. CHECK NAAR DIE POSITION TRANSFORM EN VERANDER DAT EERST
     public void Start ()
     {
-        
+        startPlayerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
     }
 	
 	
 	void Update ()
     {
-        
+        GameScore();
         GameSpeed();
         Movement();
-        
     }
 
     void GameSpeed()
@@ -78,9 +84,23 @@ public class Player : MonoBehaviour {
         }
     }
 
+    void GameScore()
+    {
+
+        playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
+
+
+        score = (playerPos_Y - startPlayerPos_Y) ;
+
+        int round = (int)System.Math.Round(score);
+        
+        gameText.text = "Score: " + round.ToString();
+    }
+
+
     void Movement()
     {
-        float playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
+        playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
         
         
 
