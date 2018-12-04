@@ -32,7 +32,11 @@ public class Player : MonoBehaviour {
     private bool check_firstAdd = true;
     private float firstAdd;
 
-    void Start ()
+
+
+
+
+    public void Start ()
     {
         
     }
@@ -40,14 +44,17 @@ public class Player : MonoBehaviour {
 	
 	void Update ()
     {
-        Gametime();
+        
+        GameSpeed();
         Movement();
         
     }
 
-    void Gametime()
+    void GameSpeed()
     {
 
+        //zorgt er voor dat de game steeds sneller gaat
+        // ** moet #GETUNED worden
         if (speedUpwards < MaxSpeedUpwards)
         {
             speedUpwards = Time.time * speedMultiplier + firstAdd;
@@ -57,9 +64,9 @@ public class Player : MonoBehaviour {
         {
             speedUpwards = MaxSpeedUpwards;
         }
-        Debug.Log(speedUpwards);
+        
 
-
+        // dit set een starting speed
         if (check_firstAdd == true)
         {
             firstAdd = startSpeed;
@@ -73,8 +80,18 @@ public class Player : MonoBehaviour {
 
     void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        float playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
+        
+        
+
+        if (Input.GetKeyDown(KeyCode.Space) && playerPos_Y > -6)
         {
+
+
+            // Om de speler naar links of rechts te laten gaan
+            // false = links || true = rechts
+
+            // Om de speler mee te laten draaien met de richting
             if (check_direction == true)
             {
                 left = -30;
@@ -87,6 +104,7 @@ public class Player : MonoBehaviour {
                 right = 60;
             }
 
+            
             if (movementLR == false)
             {
                 movementLR = true;
@@ -99,7 +117,9 @@ public class Player : MonoBehaviour {
                 distance = distanceRight;
                 Rotate(right);
             }
+
             
+
         }
 
         targetPos = new Vector2(transform.position.x + distance, transform.position.y);
