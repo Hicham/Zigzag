@@ -33,16 +33,10 @@ public class Player : MonoBehaviour {
     public float speedMultiplier;
     public float scoreMultiplier;
 
-    private bool check_firstAdd = true;
-    private float firstAdd;
-
     public Text gameText;
     private float score;
-    
 
     // doe starting values in start zodat je niet met false en true hoef te werken.
-    // bijv speed upwards + firstadd; in start
-    //DIT KAN JE NU NIET DOEN. CHECK NAAR DIE POSITION TRANSFORM EN VERANDER DAT EERST
     public void Start ()
     {
         startPlayerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
@@ -61,39 +55,24 @@ public class Player : MonoBehaviour {
 
         //zorgt er voor dat de game steeds sneller gaat
         // ** moet #GETUNED worden
+
         if (speedUpwards < MaxSpeedUpwards)
         {
-            speedUpwards = Time.time * speedMultiplier + firstAdd;
-           
+            speedUpwards = Time.time * speedMultiplier + startSpeed;
         }
         else
         {
             speedUpwards = MaxSpeedUpwards;
         }
-        
-
-        // dit set een starting speed
-        if (check_firstAdd == true)
-        {
-            firstAdd = startSpeed;
-        }
-        else if (check_firstAdd == false)
-        {
-            firstAdd = 0;
-            check_firstAdd = true;
-        }
+        Debug.Log(speedUpwards);
     }
 
     void GameScore()
     {
 
         playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
-
-
         score = (playerPos_Y - startPlayerPos_Y) ;
-
         int round = (int)System.Math.Round(score);
-        
         gameText.text = "Score: " + round.ToString();
     }
 
@@ -102,16 +81,14 @@ public class Player : MonoBehaviour {
     {
         playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
         
-        
-
         if (Input.GetKeyDown(KeyCode.Space) && playerPos_Y > -6)
         {
-
-
+            
             // Om de speler naar links of rechts te laten gaan
             // false = links || true = rechts
 
             // Om de speler mee te laten draaien met de richting
+
             if (check_direction == true)
             {
                 left = -30;
@@ -124,7 +101,6 @@ public class Player : MonoBehaviour {
                 right = 60;
             }
 
-            
             if (movementLR == false)
             {
                 movementLR = true;
@@ -144,7 +120,7 @@ public class Player : MonoBehaviour {
 
         targetPos = new Vector2(transform.position.x + distance, transform.position.y);
         targetPosUpwards = new Vector2(transform.position.x, transform.position.y + 100);
-
+        
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         transform.position = Vector2.MoveTowards(transform.position, targetPosUpwards, speedUpwards * Time.deltaTime);
     }
