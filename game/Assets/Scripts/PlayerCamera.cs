@@ -14,7 +14,7 @@ public class PlayerCamera : MonoBehaviour {
 	}
 	
 	
-	void Update ()
+	void LateUpdate ()
     {
         float playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
 
