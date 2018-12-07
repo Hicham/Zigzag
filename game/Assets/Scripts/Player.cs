@@ -32,9 +32,6 @@ public class Player : MonoBehaviour {
     
     public float speedMultiplier;
     public float scoreMultiplier;
-
-    public Text gameText;
-    private float score;
     
     public void Start ()
     {
@@ -44,7 +41,7 @@ public class Player : MonoBehaviour {
 	
 	void Update ()
     {
-        GameScore();
+        
         GameSpeed();
         Movement();
     }
@@ -61,20 +58,9 @@ public class Player : MonoBehaviour {
         {
             speedUpwards = MaxSpeedUpwards;
         }
-        Debug.Log(speedUpwards);
+        //Debug.Log(speedUpwards);
 
     }
-
-    void GameScore()
-    {
-
-        playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
-        score = (playerPos_Y - startPlayerPos_Y) ;
-        int round = (int)System.Math.Round(score);
-        gameText.text = "Score: " + round.ToString();
-    }
-
-
     void Movement()
     {
         playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
