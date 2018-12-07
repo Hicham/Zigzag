@@ -52,3 +52,11 @@ Preset:
     propertyPath: speedMultiplier
     value: 0.1
     objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: scoreMultiplier
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gameText
+    value: 
+    objectReference: {fileID: 0}

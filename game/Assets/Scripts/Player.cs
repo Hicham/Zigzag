@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
     private Vector2 targetPos;
     private Vector2 targetPosUpwards;
 
+    private float playerPos_Y;
+    private float startPlayerPos_Y;
     private bool movementLR = false;
 
     public float speed;
@@ -28,30 +31,31 @@ public class Player : MonoBehaviour {
 
     
     public float speedMultiplier;
+    public float scoreMultiplier;
 
-    private bool check_firstAdd = true;
-    private float firstAdd;
-
-    void Start ()
+    public Text gameText;
+    private float score;
+    
+    public void Start ()
     {
-        
+        startPlayerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
     }
 	
 	
 	void Update ()
     {
-        Gametime();
+        GameScore();
+        GameSpeed();
         Movement();
-        
     }
 
-    void Gametime()
+    void GameSpeed()
     {
-
         if (speedUpwards < MaxSpeedUpwards)
         {
-            speedUpwards = Time.time * speedMultiplier + firstAdd;
-           
+            speedUpwards = Time.time * speedMultiplier + startSpeed;
+            
+
         }
         else
         {
@@ -59,22 +63,25 @@ public class Player : MonoBehaviour {
         }
         Debug.Log(speedUpwards);
 
-
-        if (check_firstAdd == true)
-        {
-            firstAdd = startSpeed;
-        }
-        else if (check_firstAdd == false)
-        {
-            firstAdd = 0;
-            check_firstAdd = true;
-        }
     }
+
+    void GameScore()
+    {
+
+        playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
+        score = (playerPos_Y - startPlayerPos_Y) ;
+        int round = (int)System.Math.Round(score);
+        gameText.text = "Score: " + round.ToString();
+    }
+
 
     void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
+        
+        if (Input.GetKeyDown(KeyCode.Space) && playerPos_Y > -6)
         {
+
             if (check_direction == true)
             {
                 left = -30;
@@ -87,6 +94,7 @@ public class Player : MonoBehaviour {
                 right = 60;
             }
 
+            
             if (movementLR == false)
             {
                 movementLR = true;
@@ -99,7 +107,7 @@ public class Player : MonoBehaviour {
                 distance = distanceRight;
                 Rotate(right);
             }
-            
+
         }
 
         targetPos = new Vector2(transform.position.x + distance, transform.position.y);
