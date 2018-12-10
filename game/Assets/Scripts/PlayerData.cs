@@ -26,14 +26,12 @@ public class PlayerData : MonoBehaviour {
     {
         playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
         score = (playerPos_Y - startPlayerPos_Y);
-        int round = (int)System.Math.Round(score);
-        gameText.text = "Score: " + round.ToString();
+        int ScoreRounded = (int)System.Math.Round(score);
+        gameText.text = "Score: " + ScoreRounded.ToString();
 
-        Debug.Log(highscore);
-        if (round > highscore)
+        if (ScoreRounded > highscore)
         {
-            PlayerPrefs.SetInt("HighScore", round);
-            
+            PlayerPrefs.SetInt("HighScore", ScoreRounded);
         }
 
 	}
