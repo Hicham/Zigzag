@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
     private Vector2 targetPos;
     private Vector2 targetPosUpwards;
 
-    private float playerPos_Y;
-    private float startPlayerPos_Y;
+    public static float playerPos_Y;
+    public static float startPlayerPos_Y;
     private bool movementLR = false;
 
     public float speed;
@@ -32,10 +33,12 @@ public class Player : MonoBehaviour {
     
     public float speedMultiplier;
     public float scoreMultiplier;
+
+    public static bool alive = true;
     
     public void Start ()
     {
-        startPlayerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
+       
     }
 	
 	
@@ -106,5 +109,16 @@ public class Player : MonoBehaviour {
     void Rotate (float rotation)
     {
         transform.Rotate(Vector3.forward * rotation);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+
+        if (other.gameObject.CompareTag("Object"))
+        {
+            SceneManager.LoadScene("GameOver");
+            alive = false;
+            
+        }
     }
 }

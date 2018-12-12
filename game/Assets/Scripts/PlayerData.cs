@@ -1,40 +1,50 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class PlayerData : MonoBehaviour {
+public class PlayerData : MonoBehaviour
+{
 
     public int highscore;
-    
 
     public Text gameText;
     private float score;
-
     private float pickUpScore;
 
-    private float playerPos_Y;
-    private float startPlayerPos_Y;
+    public static int scoreRounded;
+    public static string username = "gebruiker2";
 
-    void Start ()
+    void Start()
     {
-        startPlayerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
+        Player.startPlayerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
         highscore = PlayerPrefs.GetInt("HighScore", 0);
-	}
-	
+    }
 
-	void Update ()
+
+    void Update()
     {
-        playerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
-        score = (playerPos_Y - startPlayerPos_Y);
-        int ScoreRounded = (int)System.Math.Round(score);
-        gameText.text = "Score: " + ScoreRounded.ToString();
 
-        if (ScoreRounded > highscore)
+        
+        score = (Player.playerPos_Y - Player.startPlayerPos_Y);
+        scoreRounded = (int)System.Math.Round(score);
+
+
+        if (scoreRounded > highscore || highscore < 1)
         {
-            PlayerPrefs.SetInt("HighScore", ScoreRounded);
+            gameText.text = "Score: " + scoreRounded.ToString();
+        }
+        else
+        {
+            gameText.text = "Highscore: " + highscore + Environment.NewLine + "Score: " + scoreRounded.ToString();
         }
 
-	}
+        if (Player.alive == false)
+        {
+            PlayerPrefs.SetInt("HighScore", scoreRounded);
+        }
+
+    }
 
 
 }
