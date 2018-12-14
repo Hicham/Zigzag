@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 3b260c2895124c64b86fdfb702df7061
+  productGUID: 55a670712e085e04181cc5b10650ddb9
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Zigzag
+  productName: New Unity Project (3)
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -619,9 +619,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: e6a9dc5e-891a-4d04-bb6e-2597ff8efd28
-  projectName: Zigzag (1)
-  organizationId: hicham132
+  cloudProjectId: 44bcfad0-5dcc-4308-8f6b-14b1b4d8c5f9
+  projectName: New Unity Project (3)
+  organizationId: ralphadrichem
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
