@@ -57,6 +57,7 @@
      <Compile Include="Assets\dreamlo\dreamloPromoCode.cs" />
      <Compile Include="Assets\dreamlo\LeaderBoardSample.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\PlayerAchievements.cs" />
      <Compile Include="Assets\Scripts\PlayerCamera.cs" />
      <Compile Include="Assets\Scripts\PlayerData.cs" />
      <Compile Include="Assets\Scripts\PlayerHighscores.cs" />

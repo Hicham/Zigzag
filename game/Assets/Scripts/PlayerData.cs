@@ -15,6 +15,8 @@ public class PlayerData : MonoBehaviour
     public static int scoreRounded;
     public static string username = "gebruiker2";
 
+    public static int totalPickups;
+
     void Start()
     {
         Player.startPlayerPos_Y = GameObject.FindGameObjectWithTag("Player").transform.position.y;
@@ -24,9 +26,8 @@ public class PlayerData : MonoBehaviour
 
     void Update()
     {
-
         
-        score = (Player.playerPos_Y - Player.startPlayerPos_Y);
+        score = (Player.playerPos_Y - Player.startPlayerPos_Y + Player.powerup1);
         scoreRounded = (int)System.Math.Round(score);
 
 
@@ -42,6 +43,11 @@ public class PlayerData : MonoBehaviour
         if (Player.alive == false)
         {
             PlayerPrefs.SetInt("HighScore", scoreRounded);
+
+
+            PlayerAchievements.Statistic(PlayerAchievements.totalGames, PlayerAchievements.Stat_totalGames + 1);
+            PlayerAchievements.Statistic(PlayerAchievements.totalScore, PlayerAchievements.Stat_totalScore + scoreRounded);
+            PlayerAchievements.Statistic(PlayerAchievements.PowerupPickups, PlayerAchievements.Stat_PowerupPickups + totalPickups);
         }
 
     }
