@@ -26,7 +26,7 @@ public class PlayerData : MonoBehaviour
     {
 
         
-        score = (Player.playerPos_Y - Player.startPlayerPos_Y);
+        score = (Player.playerPos_Y - Player.startPlayerPos_Y + Player.powerup1);
         scoreRounded = (int)System.Math.Round(score);
 
 

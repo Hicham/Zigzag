@@ -32,14 +32,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
         if (Player.alive == false && PlayerData.username != "")
         {
             AddScore(PlayerData.username, PlayerData.scoreRounded);
-            LoadScores();
-            
-
-
-
-            Debug.Log(highScores);
-
-            
+            LoadScores();          
         }
         
     }

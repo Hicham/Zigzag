@@ -34,6 +34,10 @@ public class Player : MonoBehaviour {
     public float speedMultiplier;
     public float scoreMultiplier;
 
+    public static int powerup1;
+    public static bool powerup2 = false;
+    public float currentTime;
+
     public static bool alive = true;
     
     public void Start ()
@@ -44,23 +48,39 @@ public class Player : MonoBehaviour {
 	
 	void Update ()
     {
-        
         GameSpeed();
         Movement();
     }
 
     void GameSpeed()
     {
-        if (speedUpwards < MaxSpeedUpwards)
+        if (powerup2 == false)
         {
-            speedUpwards = Time.time * speedMultiplier + startSpeed;
+            if (speedUpwards < MaxSpeedUpwards)
+            {
+                speedUpwards = Time.time * speedMultiplier + startSpeed;
+            }
+            else
+            {
+                speedUpwards = MaxSpeedUpwards;
+            }
             
-
         }
-        else
+        else if (powerup2 == true)
         {
-            speedUpwards = MaxSpeedUpwards;
+            
+            speedUpwards = 1f;
+
+            
+            if (Time.time >= currentTime + 10f)
+            {
+                speedUpwards = Time.time * speedMultiplier + startSpeed;
+                powerup2 = false;
+            }
         }
+        Debug.Log(speedUpwards);
+
+
         //Debug.Log(speedUpwards);
 
     }
@@ -120,5 +140,21 @@ public class Player : MonoBehaviour {
             alive = false;
             
         }
+        if (other.gameObject.CompareTag("powerup1"))
+        {
+            powerup1 += 100;
+            GameObject PowerUp_obj = GameObject.FindGameObjectWithTag("powerup1");
+            PowerUp_obj.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("powerup2"))
+        {
+            powerup2 = true;
+            GameObject PowerUp2_obj = GameObject.FindGameObjectWithTag("powerup2");
+            PowerUp2_obj.SetActive(false);
+            currentTime = Time.time;
+            
+            
+        }
+        if (other.gameObject.CompareTag(""));
     }
 }
