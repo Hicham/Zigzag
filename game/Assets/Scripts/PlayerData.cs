@@ -44,7 +44,6 @@ public class PlayerData : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", scoreRounded);
 
-
             PlayerAchievements.Statistic(PlayerAchievements.totalGames, PlayerAchievements.Stat_totalGames + 1);
             PlayerAchievements.Statistic(PlayerAchievements.totalScore, PlayerAchievements.Stat_totalScore + scoreRounded);
             PlayerAchievements.Statistic(PlayerAchievements.PowerupPickups, PlayerAchievements.Stat_PowerupPickups + totalPickups);
