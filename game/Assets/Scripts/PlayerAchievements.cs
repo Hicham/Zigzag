@@ -148,6 +148,7 @@ public class PlayerAchievements : MonoBehaviour {
             string sendText = start + text_score1000.ToString();
             CompleteAchievement(score1000, sendText);
         }
+
     }
 
    
