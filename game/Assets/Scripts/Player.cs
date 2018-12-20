@@ -35,7 +35,11 @@ public class Player : MonoBehaviour {
     public float scoreMultiplier;
 
     public static bool alive = true;
-    
+
+    public static int powerup1;
+    public static bool powerup2 = false;
+    private float currentTime;
+
     public void Start ()
     {
        
@@ -51,17 +55,33 @@ public class Player : MonoBehaviour {
 
     void GameSpeed()
     {
-        if (speedUpwards < MaxSpeedUpwards)
+
+
+        if (powerup2 == false)
         {
-            speedUpwards = Time.time * speedMultiplier + startSpeed;
-            
+            if (speedUpwards < MaxSpeedUpwards)
+            {
+                speedUpwards = Time.time * speedMultiplier + startSpeed;
+            }
+            else
+            {
+                speedUpwards = MaxSpeedUpwards;
+            }
 
         }
-        else
+        else if (powerup2 == true)
         {
-            speedUpwards = MaxSpeedUpwards;
+
+            speedUpwards = 1f;
+
+
+            if (Time.time >= currentTime + 10f)
+            {
+                speedUpwards = Time.time * speedMultiplier + startSpeed;
+                powerup2 = false;
+            }
         }
-        //Debug.Log(speedUpwards);
+
 
     }
     void Movement()
@@ -118,7 +138,32 @@ public class Player : MonoBehaviour {
         {
             SceneManager.LoadScene("GameOver");
             alive = false;
+        }
+
+        if (other.gameObject.CompareTag("powerup1"))
+        {
+            
+            powerup1 += 100;
+            GameObject PowerUp_obj = GameObject.FindGameObjectWithTag("powerup1");
+            PowerUp_obj.SetActive(false);
+
+            PlayerData.totalPickups += 1;
+
             
         }
+
+        if (other.gameObject.CompareTag("powerup2"))
+        {
+            powerup2 = true;
+            GameObject PowerUp2_obj = GameObject.FindGameObjectWithTag("powerup2");
+            PowerUp2_obj.SetActive(false);
+            currentTime = Time.time;
+
+            PlayerData.totalPickups += 1;
+
+
+
+        }
+
     }
 }
