@@ -53,31 +53,71 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_MK\MKGlowFree\MKGlowFree.cs" />
+     <Compile Include="Assets\Code\Chunks\ChunkDestroyer.cs" />
+     <Compile Include="Assets\Code\Chunks\ChunkGenerator.cs" />
+     <Compile Include="Assets\Code\Chunks\ChunkPooler.cs" />
+     <Compile Include="Assets\Code\Chunks\ChunkShuffler.cs" />
      <Compile Include="Assets\dreamlo\dreamloLeaderBoard.cs" />
      <Compile Include="Assets\dreamlo\dreamloPromoCode.cs" />
      <Compile Include="Assets\dreamlo\LeaderBoardSample.cs" />
+     <Compile Include="Assets\README.cs" />
+     <Compile Include="Assets\Scripts\LevelButton.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerAchievements.cs" />
      <Compile Include="Assets\Scripts\PlayerAchievementsList.cs" />
      <Compile Include="Assets\Scripts\PlayerCamera.cs" />
      <Compile Include="Assets\Scripts\PlayerData.cs" />
      <Compile Include="Assets\Scripts\PlayerHighscores.cs" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Illumin\MK_Illumin-Glossy.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Render\MKGlowBlurInc.cginc" />
      <None Include="Assets\dreamlo\README_FIRST.txt" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Cutout\MK_Cutout-Glossy.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Sprites\MK_Sprite-Default.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Particle\MK_Particle AddMultiply.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Particle\MK_Particle Alpha Blend.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Normal\MK_Normal-DiffuseBumped.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Normal\MK_Normal-DiffuseBumpSpec.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Render\MKGlowComposite.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Render\MKGlowBlur.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Other\MK_Illumin-Diffuse.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Particle\MK_Particle Add.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Transparent\MK_Transparent-Diffuse.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Transparent\MK_Transparent-DiffuseBumpSpec.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Other\MK_Unlit-Normal.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Particle\MK_Particle Multiply.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Cutout\MK_Cutout-DiffuseBumpSpec.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Illumin\MK_Illumin-DiffuseBumpSpec.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Sprites\MK_Sprite-Diffuse.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Illumin\MK_Illumin-DiffuseBumped.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Normal\MK_Normal-Glossy.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Sprites\MK_UnitySprites.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Transparent\MK_Transparent-DiffuseBumped.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Other\MK_Mobile-Diffuse.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\UI\MK_UI_Default.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Normal\MK_Normal-Diffuse.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Illumin\MK_Illumin-Diffuse.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Transparent\MK_Transparent-Glossy.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Cutout\MK_Cutout-Diffuse.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Render\MKGlowSelectiveRender.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Render\MKGlowCompositeInc.cginc" />
+     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Cutout\MK_Cutout-DiffuseBumped.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
  <Reference Include="UnityEditor.StandardEvents">
@@ -323,6 +363,10 @@
  <Reference Include="Boo.Lang">
  <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{C4670D74-53BA-CADB-D209-62996F2B0691}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

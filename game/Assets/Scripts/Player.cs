@@ -38,13 +38,9 @@ public class Player : MonoBehaviour {
 
     public static int powerup1;
     public static bool powerup2 = false;
+    public static bool powerup3 = false;
     private float currentTime;
 
-    public void Start ()
-    {
-       
-    }
-	
 	
 	void Update ()
     {
@@ -57,7 +53,7 @@ public class Player : MonoBehaviour {
     {
 
 
-        if (powerup2 == false)
+        if (powerup2 == false && powerup3 == false)
         {
             if (speedUpwards < MaxSpeedUpwards)
             {
@@ -69,10 +65,21 @@ public class Player : MonoBehaviour {
             }
 
         }
-        else if (powerup2 == true)
+        else if (powerup2 == true && powerup3 == false)
         {
 
-            speedUpwards = 1f;
+            speedUpwards = 1.5f;
+
+
+            if (Time.time >= currentTime + 10f)
+            {
+                speedUpwards = Time.time * speedMultiplier + startSpeed;
+                powerup2 = false;
+            }
+        }
+        if (powerup2 == false && powerup3 == true)
+        {
+            speedUpwards = 15f;
 
 
             if (Time.time >= currentTime + 10f)
@@ -161,8 +168,14 @@ public class Player : MonoBehaviour {
 
             PlayerData.totalPickups += 1;
 
-
-
+        }
+        if (other.gameObject.CompareTag("powerup3"))
+        {
+            powerup3 = true;
+            powerup2 = false;
+            GameObject PowerUp3_obj = GameObject.FindGameObjectWithTag("powerup3");
+            PowerUp3_obj.SetActive(false);
+            currentTime = Time.time;
         }
 
     }
