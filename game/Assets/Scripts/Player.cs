@@ -36,6 +36,7 @@ public class Player : MonoBehaviour {
 
     public static int powerup1;
     public static bool powerup2 = false;
+    public static bool powerup3 = false;
     public float currentTime;
 
     public static bool alive = true;
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour {
 
     void GameSpeed()
     {
-        if (powerup2 == false)
+        if (powerup2 == false && powerup3 == false)
         {
             if (speedUpwards < MaxSpeedUpwards)
             {
@@ -66,10 +67,10 @@ public class Player : MonoBehaviour {
             }
             
         }
-        else if (powerup2 == true)
+        else if (powerup2 == true && powerup3 == false)
         {
             
-            speedUpwards = 1f;
+            speedUpwards = 1.5f;
 
             
             if (Time.time >= currentTime + 10f)
@@ -78,6 +79,18 @@ public class Player : MonoBehaviour {
                 powerup2 = false;
             }
         }
+        if (powerup2 == false && powerup3 == true)
+        {
+            speedUpwards = 15f;
+
+
+            if (Time.time >= currentTime + 10f)
+            {
+                speedUpwards = Time.time * speedMultiplier + startSpeed;
+                powerup2 = false;
+            }
+        }
+        
         Debug.Log(speedUpwards);
 
 
@@ -149,12 +162,20 @@ public class Player : MonoBehaviour {
         if (other.gameObject.CompareTag("powerup2"))
         {
             powerup2 = true;
+            powerup3 = false;
             GameObject PowerUp2_obj = GameObject.FindGameObjectWithTag("powerup2");
             PowerUp2_obj.SetActive(false);
             currentTime = Time.time;
             
             
         }
-        if (other.gameObject.CompareTag(""));
+        if (other.gameObject.CompareTag("powerup3"))
+        {
+            powerup3 = true;
+            powerup2 = false;
+            GameObject PowerUp3_obj = GameObject.FindGameObjectWithTag("powerup3");
+            PowerUp3_obj.SetActive(false);
+            currentTime = Time.time;
+        }
     }
 }
