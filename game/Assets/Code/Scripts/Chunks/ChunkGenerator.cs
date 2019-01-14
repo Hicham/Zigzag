@@ -22,6 +22,7 @@ public class ChunkGenerator : MonoBehaviour
         {
             platformHeights[i] = ChunkList[i].GetComponent<BoxCollider2D>().size.y;
             GameObject obj = (GameObject)Instantiate(ChunkList[i]);
+            obj.transform.parent = GameObject.Find("Canvas").transform;
             obj.SetActive(false);
             ShuffledList.Add(obj);
         }

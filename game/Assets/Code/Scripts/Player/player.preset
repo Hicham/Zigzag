@@ -29,20 +29,24 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: movementSpeed
+    propertyPath: PlayerObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: time
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: speed
-    value: 7
+    propertyPath: speed.x
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: distanceLeft
-    value: 10
+    propertyPath: speed.y
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: distanceRight
-    value: -10
+    propertyPath: speedUpwards
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: startSpeed

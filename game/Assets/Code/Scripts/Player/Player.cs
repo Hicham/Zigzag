@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     public static float playerPos_Y;
     public static float startPlayerPos_Y;
 
+    //Touches
+    private Touch tap;
+    private bool touch = false;
+ 
     public Vector2 speed;
     public float speedUpwards;
 
@@ -29,6 +33,7 @@ public class Player : MonoBehaviour
     public static bool powerup2 = false;
     public static bool powerup3 = false;
     private float currentTime;
+    private bool changed = false;
 
     public void Start()
     {
@@ -105,7 +110,16 @@ public class Player : MonoBehaviour
         //Vector2.up zorgt dat de player altijd naar boven zal bewegen in vergelijking met de rotatie van het object. Dit is dus de motor.
         speed = Vector2.up * speedUpwards;
         transform.Translate(speed);
-        
+
+        if (tap.phase == TouchPhase.Moved || tap.phase == TouchPhase.Stationary)
+        {
+            touch = true;
+            if (tap.phase == TouchPhase.Ended)
+            {
+                touch = false;
+            }
+        }
+
         //Checken of hij voorbij het startpunt is gegaan en geeft een random kant als startdirection
         if (transform.position.y > -6 && randomstart == false)
         {
@@ -126,17 +140,22 @@ public class Player : MonoBehaviour
         }
 
         //Toggle van direction
-        if (Input.GetKeyDown(KeyCode.Space) && passedstartpoint == true)
+        if (tap.phase == TouchPhase.Began)
         {
-            if (angle)
+            if (touch && passedstartpoint)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 45f);
-                angle = false;
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 315f);
-                angle = true;
+                if (angle)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 45f);
+                    angle = false;
+                    changed = true;
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 315f);
+                    angle = true;
+                    changed = true;
+                }
             }
         }
     }
