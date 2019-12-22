@@ -9,7 +9,6 @@ public class PlayerAchievements : MonoBehaviour {
 
     // maak int goal_(achievement) = ???  om het makkelijker te maken om alles terug te pakken enz
 
-    public Text lastScoreText;
     public Text achievementText;
     private int completeCount = 0;
 
@@ -96,7 +95,6 @@ public class PlayerAchievements : MonoBehaviour {
 
         if (!Player.alive /* && check == true*/)
         {
-            lastScoreText.text = ("Score: ") + PlayerPrefs.GetInt("LastScore").ToString();
             Achievements();
             check = false;
         }
@@ -149,12 +147,6 @@ public class PlayerAchievements : MonoBehaviour {
         {
             string sendText = start + text_score1000.ToString();
             CompleteAchievement(score1000, sendText);
-        }
-
-        else
-        {
-            achievementText.text = "";
-            lastScoreText.text = "Score: " + PlayerPrefs.GetInt("LastScore").ToString();
         }
 
     }
