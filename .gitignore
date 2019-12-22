@@ -1,3 +1,6 @@
 game/.vs
 game/.Logs
 game/ProjectSettings
+game/Library
+game/obj
+game/Packages
