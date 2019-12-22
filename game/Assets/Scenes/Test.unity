@@ -454,7 +454,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.4
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -624,6 +624,7 @@ GameObject:
   - component: {fileID: 1320618552}
   - component: {fileID: 1320618551}
   - component: {fileID: 1320618547}
+  - component: {fileID: 1320618548}
   - component: {fileID: 1320618550}
   - component: {fileID: 1320618549}
   - component: {fileID: 1320618546}
@@ -684,6 +685,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1320618548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320618544}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a5e2bfeaf1c954c85cd0374af1dc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Movekey: 32
+  movementSpeed: 0
 --- !u!114 &1320618549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,6 +726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerObject: {fileID: 1320618544}
   time: 0
+  Movekey: 32
   speed: {x: 0, y: 0}
   speedUpwards: 0
   startSpeed: 0.0275

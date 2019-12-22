@@ -13,10 +13,11 @@ public class Player : MonoBehaviour
     public static float playerPos_Y;
     public static float startPlayerPos_Y;
 
+    public KeyCode Movekey;
     //Touches
     private Touch tap;
     private bool touch = false;
- 
+
     public Vector2 speed;
     public float speedUpwards;
 
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour
         {
             if (speedUpwards < MaxSpeedUpwards)
             {
-                
+
             }
             else
             {
@@ -124,7 +125,7 @@ public class Player : MonoBehaviour
         if (transform.position.y > -6 && randomstart == false)
         {
             passedstartpoint = true;
-            int startrand = Random.Range(0,1);
+            int startrand = Random.Range(0, 1);
             if (startrand == 1)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 45f);
@@ -139,10 +140,30 @@ public class Player : MonoBehaviour
             }
         }
 
-        //Toggle van direction
-        if (tap.phase == TouchPhase.Began)
+        //Toggle van direction (TOUCH is commented)
+        //if (tap.phase == TouchPhase.Began)
+        //{
+        //if (touch && passedstartpoint)
+        //Checks if the movement key is pressed and beyond the starting position, then flips the angle of the player
+        if (Input.GetKeyDown(Movekey) && passedstartpoint)
         {
-            if (touch && passedstartpoint)
+            if (angle)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 45f);
+                angle = false;
+                changed = true;
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 315f);
+                angle = true;
+                changed = true;
+            }
+        }
+        //Touchbased controls. Checks if there is a touch, then waits until it's gone before flipping the player.
+        else if (touch && passedstartpoint)
+        {
+            if (!touch)
             {
                 if (angle)
                 {
@@ -158,6 +179,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        //}
     }
 
     void OnCollisionEnter2D(Collision2D other)

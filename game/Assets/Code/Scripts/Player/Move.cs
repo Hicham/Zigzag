@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Move : MonoBehaviour {
-
+    public KeyCode Movekey = KeyCode.LeftControl;
     public float movementSpeed;
     private Vector2 movement;
     private bool angle = true;
@@ -11,7 +11,9 @@ public class Move : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && passedstartpoint == true)
+        KeyPhase();
+        //check if key or touch and beyond the starting point
+        if (Input.GetKeyDown(Movekey) && passedstartpoint == true)
         {
             if (angle == true)
             {
@@ -31,8 +33,15 @@ public class Move : MonoBehaviour {
         transform.Translate(Vector2.up);
     }
 
-    void FixedUpdate () {
-        
-        
+    public void KeyPhase()
+    {
+        if (Input.GetKeyDown(Movekey))
+        {
+            Debug.Log("Down");
+        }
+        if (Input.GetKeyUp(Movekey))
+        {
+            Debug.Log("Up");
+        }
     }
 }
